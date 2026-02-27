@@ -14,7 +14,9 @@ dependencies = [
 ]
 
 [project.scripts]
-pdf2typst = "pdf_to_typst.cli:main"
+pdf-to-typst = "pdf_to_typst.convert_cli:main"
+pdf-compare = "pdf_to_typst.compare_cli:main"
+pdf2typst = "pdf_to_typst.convert_cli:main"
 
 [project.urls]
 github = "https://github.com/mert-kurttutan/pdf-to-typst"

@@ -18,31 +18,44 @@ uv sync
 Convert to Markdown (default):
 
 ```bash
-uv run pdf2typst /path/to/file.pdf
+uv run pdf-to-typst /path/to/file.pdf
 ```
 
 Convert to HTML:
 
 ```bash
-uv run pdf2typst /path/to/file.pdf --format html
+uv run pdf-to-typst /path/to/file.pdf --format html
 ```
 
 Custom output file:
 
 ```bash
-uv run pdf2typst /path/to/file.pdf --format markdown --output /path/to/output.md
+uv run pdf-to-typst /path/to/file.pdf --format markdown --output /path/to/output.md
+```
+
+Compare two PDFs:
+
+```bash
+uv run pdf-compare /path/to/file1.pdf /path/to/file2.pdf
+```
+
+Write comparison report to file:
+
+```bash
+uv run pdf-compare /path/to/file1.pdf /path/to/file2.pdf --report-output /path/to/report.txt
 ```
 
 Enable Marker options:
 
 ```bash
-uv run pdf2typst /path/to/file.pdf --use-llm --force-ocr
+uv run pdf-to-typst /path/to/file.pdf --use-llm --force-ocr
 ```
 
-Run module directly:
+Run modules directly:
 
 ```bash
-uv run python -m pdf_to_typst.cli /path/to/file.pdf --format markdown
+uv run python -m pdf_to_typst.convert_cli /path/to/file.pdf --format markdown
+uv run python -m pdf_to_typst.compare_cli /path/to/file1.pdf /path/to/file2.pdf
 ```
 
 ## Notes

@@ -3,13 +3,14 @@ from __future__ import annotations
 from pathlib import Path
 
 
-def convert_pdf(
+def extract_pdf_text(
     input_pdf: Path,
-    output_format: str,
-    output_path: Path | None = None,
+    *,
+    output_format: str = "markdown",
     use_llm: bool = False,
     force_ocr: bool = False,
-) -> Path:
+) -> str:
+    """Extract rendered text from a PDF using marker-pdf."""
     from marker.config.parser import ConfigParser
     from marker.converters.pdf import PdfConverter
     from marker.models import create_model_dict
@@ -38,6 +39,22 @@ def convert_pdf(
     )
     rendered = converter(str(input_pdf))
     text, _, _ = text_from_rendered(rendered)
+    return text
+
+
+def convert_pdf(
+    input_pdf: Path,
+    output_format: str,
+    output_path: Path | None = None,
+    use_llm: bool = False,
+    force_ocr: bool = False,
+) -> Path:
+    text = extract_pdf_text(
+        input_pdf=input_pdf,
+        output_format=output_format,
+        use_llm=use_llm,
+        force_ocr=force_ocr,
+    )
 
     if output_path is None:
         extension = "md" if output_format == "markdown" else "html"

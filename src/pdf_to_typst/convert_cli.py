@@ -3,12 +3,12 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from pdf_to_typst.converter import convert_pdf
+from pdf_to_typst.convert import convert_pdf
 
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        prog="pdf2typst",
+        prog="pdf-to-typst",
         description="Convert a PDF to markdown or HTML using marker-pdf.",
     )
     parser.add_argument("input_pdf", type=Path, help="Path to input PDF file.")
@@ -16,13 +16,13 @@ def build_parser() -> argparse.ArgumentParser:
         "--format",
         choices=["markdown", "html"],
         default="markdown",
-        help="Output format (default: markdown).",
+        help="Output format for conversion mode (default: markdown).",
     )
     parser.add_argument(
         "--output",
         type=Path,
         default=None,
-        help="Output file path. Defaults to input filename with .md/.html extension.",
+        help="Output file path for conversion mode. Defaults to input filename with .md/.html extension.",
     )
     parser.add_argument(
         "--use-llm",
@@ -39,6 +39,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 def main() -> None:
     args = build_parser().parse_args()
+
     output = convert_pdf(
         input_pdf=args.input_pdf,
         output_format=args.format,
