@@ -81,6 +81,7 @@ uv run python -m pdf_to_typst.compare_cli /path/to/file1.pdf /path/to/file2.pdf
 Use the Typst CLI to compile a `.typ` file and generate a PDF output:
 
 ```bash
+# typst-cli needs to be installed
 typst compile assets/sample/sample.typ assets/sample/sample_typst.pdf
 ```
 
