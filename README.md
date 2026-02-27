@@ -13,6 +13,24 @@ Convert a given PDF into Markdown or HTML using the Marker Python library.
 uv sync
 ```
 
+## Development
+
+Before starting development, do the following:
+
+1. Install the project with development dependencies:
+```sh
+uv sync --group dev
+```
+2. Install `prek` to run hooks automatically before each commit:
+```sh
+uv run prek install
+```
+3. Run lint and tests locally:
+```sh
+uv run ruff check
+uv run pytest
+```
+
 ## Usage
 
 Convert to Markdown (default):
