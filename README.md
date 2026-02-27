@@ -76,6 +76,14 @@ uv run python -m pdf_to_typst.convert_cli /path/to/file.pdf --format markdown
 uv run python -m pdf_to_typst.compare_cli /path/to/file1.pdf /path/to/file2.pdf
 ```
 
+### Test Typst
+
+Use the Typst CLI to compile a `.typ` file and generate a PDF output:
+
+```bash
+typst compile assets/sample/sample.typ assets/sample/sample_typst.pdf
+```
+
 ## Notes
 
 - `--use-llm` requires configuring a Marker LLM backend (Gemini/Ollama/OpenAI/etc.).
