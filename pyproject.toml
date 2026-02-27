@@ -1,0 +1,46 @@
+[build-system]
+requires = ["hatchling>=1.22.0,<2.0.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pdf-to-typst"
+version = "0.1.0"
+description = "Convert a PDF to Markdown or HTML with Marker."
+authors = [{name = "Mert Kurttutan", email = "kurttutan.mert@gmail.com"}]
+readme = "README.md"
+requires-python = ">=3.10,<4.0"
+dependencies = [
+    "marker-pdf",
+]
+
+[project.scripts]
+pdf2typst = "pdf_to_typst.cli:main"
+
+[project.urls]
+github = "https://github.com/mert-kurttutan/pdf-to-typst"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pdf_to_typst"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 128
+indent-width = 4
+extend-exclude = ["assets", "output", "result", "notebooks"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+    "ruff>=0.6.0",
+]
